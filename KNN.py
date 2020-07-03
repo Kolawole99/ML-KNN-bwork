@@ -10,6 +10,9 @@ import numpy as np
 import matplotlib.ticker as ticker
 from sklearn import preprocessing
 import seaborn as sns
+from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn import metrics
 #%matplotlib inline #needed in Jupyter labs
 
 #====================================About the dataset=====================================
@@ -134,4 +137,13 @@ print(X)
 # 2. Decision Tree
 # 3. Support Vector Machine
 # 4. Logistic Regression
+
+#======================================CLASSIFICATION========================================
+
+#=================================K NEAREST NEIGHBOR (KNN)==================================
+
+#========================================Train/Test Split=====================================
+X_train, X_test, y_train, y_test = train_test_split( X, y, test_size=0.2, random_state=4)
+print ('Train set:', X_train.shape,  y_train.shape)
+print ('Test set:', X_test.shape,  y_test.shape)
 
