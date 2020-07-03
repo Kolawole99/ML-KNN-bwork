@@ -58,8 +58,18 @@ plt.show()
 #############================Using Age==================##############
 bins = np.linspace(df.age.min(), df.age.max(), 10)
 g = sns.FacetGrid(df, col="Gender", hue="loan_status", palette="Set1", col_wrap=2)
-g.map(plt.hist, 'Age', bins=bins, ec="k")
+g.map(plt.hist, 'age', bins=bins, ec="k")
 g.axes[-1].legend()
 plt.show()
 
+
+#=============================PRE-PROCESSING: FEATURE SELECTION/EXTRACTION=========================
+
+#====================Lets look at the day of the week people by gender took the loans=====================
+df['dayofweek'] = df['effective_date'].dt.dayofweek
+bins = np.linspace(df.dayofweek.min(), df.dayofweek.max(), 10)
+g = sns.FacetGrid(df, col="Gender", hue="loan_status", palette="Set1", col_wrap=2)
+g.map(plt.hist, 'dayofweek', bins=bins, ec="k")
+g.axes[-1].legend()
+plt.show()
 
