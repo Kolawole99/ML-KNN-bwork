@@ -73,3 +73,13 @@ g.map(plt.hist, 'dayofweek', bins=bins, ec="k")
 g.axes[-1].legend()
 plt.show()
 
+# We see that people who get the loan at the end of the week dont pay it off, so lets use Feature binarization to set a threshold values less then day 4
+
+#====================Setting the loan threshold date limit to day 4 of the week==========================
+df['weekend'] = df['dayofweek'].apply(lambda x: 1 if (x>3)  else 0)
+threshold = df.head()
+print(threshold)
+
+#=======================Convert Categorical features to numerical values===================================
+
+
