@@ -26,4 +26,9 @@ from sklearn import preprocessing
 
 #==========================loading the data into a dataframe==============================
 df = pd.read_csv('./loan_train.csv')
-df.head()
+datashow = df.head()
+datashape = df.shape
+print(datashow)
+print(datashape)
+
+#=========================
