@@ -58,7 +58,7 @@ plt.show()
 #############================Using Age==================##############
 bins = np.linspace(df.age.min(), df.age.max(), 10)
 g = sns.FacetGrid(df, col="Gender", hue="loan_status", palette="Set1", col_wrap=2)
-g.map(plt.hist, 'age', bins=bins, ec="k")
+g.map(plt.hist, 'Age', bins=bins, ec="k")
 g.axes[-1].legend()
 plt.show()
 
