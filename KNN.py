@@ -1,4 +1,4 @@
-#====================================DATA FORMATTING, PROJECT=================================
+#====================================DATA FORMATTING & PACKAGES=================================
 
 #=========================importing needed packages and source files=========================
 import itertools
@@ -23,7 +23,6 @@ from sklearn import preprocessing
 # Education	            Education of applicant
 # Gender	            The gender of applicant
 
-
 #==========================loading the data into a dataframe==============================
 df = pd.read_csv('./loan_train.csv')
 datashow = df.head()
@@ -31,4 +30,9 @@ datashape = df.shape
 print(datashow)
 print(datashape)
 
-#=========================
+#===========================Converting all dates to date time object================================
+df['due_date'] = pd.to_datetime(df['due_date'])
+df['effective_date'] = pd.to_datetime(df['effective_date'])
+df.head()
+
+#=======================
