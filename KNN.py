@@ -81,11 +81,33 @@ threshold = df.head()
 print(threshold)
 
 #=======================Convert Categorical features to numerical values===================================
-#display poayment status by gender
-groupcount = df.groupby(['Gender'])['loan_status'].value_counts(normalize=True)
-print(groupcount)
+#display payment status by gender
+gendercount = df.groupby(['Gender'])['loan_status'].value_counts(normalize=True)
+print(gendercount)
 #convert male to 0 and female to 1
 df['Gender'].replace(to_replace=['male','female'], value=[0,1],inplace=True)
 df.head()
+
+
+#================================ONEHOT ENCODING OF DATA===========================================
+
+#==================================group by education=====================================
+#counting and classifying datas by the education and payment status
+educount = df.groupby(['education'])['loan_status'].value_counts(normalize=True)
+print(educount)
+#features before one-hot encoding
+featuresb4onehotenc = df[['Principal','terms','age','Gender','education']].head()
+print(featuresb4onehotenc)
+
+#======one hot encoding to convert categorical varables to binary variables and append them to feature Data=====
+#selecting all features
+Feature = df[['Principal','terms','age','Gender','weekend']]
+#adding education and encoding it
+Feature = pd.concat([Feature, pd.get_dummies(df['education'])], axis=1)
+Feature.drop(['Master or Above'], axis = 1,inplace=True)
+newfeatures = Feature.head()
+print(newfeatures)
+
+
 
 
