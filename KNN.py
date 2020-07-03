@@ -81,5 +81,11 @@ threshold = df.head()
 print(threshold)
 
 #=======================Convert Categorical features to numerical values===================================
+#display poayment status by gender
+groupcount = df.groupby(['Gender'])['loan_status'].value_counts(normalize=True)
+print(groupcount)
+#convert male to 0 and female to 1
+df['Gender'].replace(to_replace=['male','female'], value=[0,1],inplace=True)
+df.head()
 
 
