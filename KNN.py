@@ -123,5 +123,15 @@ print(y)
 
 
 #======================================NORMALIZING DATA=======================================
+X = preprocessing.StandardScaler().fit(X).transform(X)
+X[0:5]
+print(X)
 
+
+# Classification
+#
+# 1. K Nearest Neighbor(KNN)
+# 2. Decision Tree
+# 3. Support Vector Machine
+# 4. Logistic Regression
 
