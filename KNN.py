@@ -184,8 +184,10 @@ print( "The best accuracy was with", mean_acc.max(), "with k=", mean_acc.argmax(
 
 #End of project. I tried with K = 20 and K = 10, with K = 20, the best value was from K = 7, and the difference between it and K = 10 with the best at K = 7 is just 0. I choose K = 10 since there is no difference.
 
-
-
+#=============================Training with K=7============================
+neigh = KNeighborsClassifier(n_neighbors = 7).fit(X_train,y_train)
+neigh
+print(neigh)
 #=======================================DECISION TREE===========================================
 
 
