@@ -140,10 +140,52 @@ print(X)
 
 #======================================CLASSIFICATION========================================
 
+
+
 #=================================K NEAREST NEIGHBOR (KNN)==================================
 
 #========================================Train/Test Split=====================================
 X_train, X_test, y_train, y_test = train_test_split( X, y, test_size=0.2, random_state=4)
 print ('Train set:', X_train.shape,  y_train.shape)
 print ('Test set:', X_test.shape,  y_test.shape)
+
+#=========================LOOPING THROUGH MULTIPLE K's AND FINDING THE MOST ACCURATE ONE==================
+#specifying the first value of the k's as 10
+Ks = 10
+#deducting 1 from the value of k
+mean_acc = np.zeros((Ks-1))
+
+std_acc = np.zeros((Ks-1))
+ConfustionMx = []
+for n in range(1,Ks):
+    
+    #Train Model 
+    neigh = KNeighborsClassifier(n_neighbors = n).fit(X_train,y_train)
+    #use model to predict
+    yhat = neigh.predict(X_test)
+    #check the accuracy
+    mean_acc[n-1] = metrics.accuracy_score(y_test, yhat)
+    print(mean_acc[n-1])
+    #calculating the standard deviation of all the scores
+    std_acc[n-1] = np.std(yhat==y_test)/np.sqrt(yhat.shape[0])
+
+mean_acc
+
+plt.plot(range(1,Ks),mean_acc,'g')
+plt.fill_between(range(1,Ks),mean_acc - 1 * std_acc,mean_acc + 1 * std_acc, alpha=0.10)
+plt.legend(('Accuracy ', '+/- 3xstd'))
+plt.ylabel('Accuracy ')
+plt.xlabel('Number of Neighbors (K)')
+plt.tight_layout()
+plt.show()
+
+print( "The best accuracy was with", mean_acc.max(), "with k=", mean_acc.argmax()+1)
+#The best accuracy was with 0.76 with k= 7
+
+#End of project. I tried with K = 20 and K = 10, with K = 20, the best value was from K = 7, and the difference between it and K = 10 with the best at K = 7 is just 0. I choose K = 10 since there is no difference.
+
+
+
+#=======================================DECISION TREE===========================================
+
 
