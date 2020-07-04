@@ -131,17 +131,6 @@ X[0:5]
 print(X)
 
 
-# Classification
-#
-# 1. K Nearest Neighbor(KNN)
-# 2. Decision Tree
-# 3. Support Vector Machine
-# 4. Logistic Regression
-
-#======================================CLASSIFICATION========================================
-
-
-
 #=================================K NEAREST NEIGHBOR (KNN)==================================
 
 #========================================Train/Test Split=====================================
@@ -188,8 +177,5 @@ print( "The best accuracy was with", mean_acc.max(), "with k=", mean_acc.argmax(
 neigh = KNeighborsClassifier(n_neighbors = 7).fit(X_train,y_train)
 neigh
 print(neigh)
-
-
-#=======================================DECISION TREE===========================================
 
 
