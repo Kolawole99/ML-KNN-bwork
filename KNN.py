@@ -188,6 +188,8 @@ print( "The best accuracy was with", mean_acc.max(), "with k=", mean_acc.argmax(
 neigh = KNeighborsClassifier(n_neighbors = 7).fit(X_train,y_train)
 neigh
 print(neigh)
+
+
 #=======================================DECISION TREE===========================================
 
 
