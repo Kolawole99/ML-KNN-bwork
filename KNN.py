@@ -178,4 +178,16 @@ neigh = KNeighborsClassifier(n_neighbors = 7).fit(X_train,y_train)
 neigh
 print(neigh)
 
+#===============================Predicting with the trained algorithm=============================
+yhat = neigh.predict(X_test)
+yhat[0:5]
+#print(yhat)
 
+
+#======================================ACCURACY EVALUATION====================================
+
+#=====using accuracy classification score(equals the jaccard_similarity_score) it computes subset accuracy=====
+print("Train set Accuracy: ", metrics.accuracy_score(y_train, neigh.predict(X_train)))
+print("Test set Accuracy: ", metrics.accuracy_score(y_test, yhat))
+
+#-------------DO NOT FORGET: Higher the Jaccard score higher the accuracy of the classifier-------------
